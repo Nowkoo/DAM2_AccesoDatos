@@ -3,7 +3,7 @@ package Tema1.Ejercicios
 import java.io.File
 
 var directorio = File.listRoots()[0]
-var input = -2
+var input : String
 var mostrarDirectorio = true
 
 fun main() {
@@ -14,7 +14,11 @@ fun main() {
 
         do {
             println("Introdueix una opció (-1 per acabar): ")
-            var input = readLine()?.toInt()
+            input = readln()
+            if (input.length != 0) {
+                procesarOpcion(input.toInt())
+            }
+//            input = readln().toInt()
         } while (!inputValido(input))
 
         procesarOpcion(input)
