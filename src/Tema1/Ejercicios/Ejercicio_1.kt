@@ -6,7 +6,7 @@ var directorio = File.listRoots()[0]
 var mostrarDirectorio = true
 
 fun main() {
-    var input : Int?
+    var input : Int
 
     do {
         if (mostrarDirectorio) {
@@ -23,7 +23,7 @@ fun main() {
     } while (input != -1)
 }
 
-fun inputValido(input: Int?): Boolean {
+fun inputValido(input: Int): Boolean {
     return (input == -1 || input == 0 || ficheroExiste(input))
 }
 
