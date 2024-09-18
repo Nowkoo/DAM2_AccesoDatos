@@ -74,10 +74,7 @@ private fun seleccionarFichero(input: Int?) {
 
 private fun ficheroExiste(input : Int): Boolean {
     var numFicheros = directorio.listFiles().size
-    if (input >= 0 && input <= numFicheros) {
-        return true
-    }
-    return false
+    return input in 0..numFicheros
 }
 
 private fun ficheroSeleccionado(input: Int?): File? {
