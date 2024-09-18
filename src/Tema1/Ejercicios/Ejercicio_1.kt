@@ -2,17 +2,28 @@ package Tema1.Ejercicios
 
 import java.io.File
 
-var directory = File.listRoots()[0]
+var directorio = File.listRoots()[0]
+var input = -2
+var mostrarDirectorio = true
 
 fun main() {
-    while (true) {
-        mostrarDirectorio(directory)
+    while (input != -1) {
+        if (mostrarDirectorio) {
+            mostrarDirectorio(directorio)
+        }
 
-        val input = readLine()!!.toInt()
-        if(input == -1) break
+        do {
+            println("Introdueix una opció (-1 per acabar): ")
+            var input = readLine()?.toInt()
+        } while (!inputValido(input))
+
         procesarOpcion(input)
     }
 
+}
+
+fun inputValido(input: Int?): Boolean {
+    return (input == -1 || input == 0 || ficheroExiste())
 }
 
 fun mostrarDirectorio(file: File) {
@@ -23,9 +34,9 @@ fun mostrarDirectorio(file: File) {
         indice++
         for (e in file.listFiles()) {
             if (e.isDirectory) {
-                println("$indice- ${e.name} es directorio")
+                println("$indice- ${e.name} <Directorio>")
             } else if (e.isFile) {
-                println("$indice- ${e.name} es fichero y pesa ${e.length().dec()}")
+                println("$indice- ${e.name} ${e.length().dec()}")
             }
 
             indice++
@@ -33,18 +44,67 @@ fun mostrarDirectorio(file: File) {
     }
 }
 
-fun procesarOpcion(input: Int) {
-    if (input != null) {
-        when (input) {
-            0 -> directory = File.listRoots()[0]
+fun procesarOpcion(input: Int?) {
+    when (input) {
+        -1 -> {
+            return
+        }
 
+        0 -> {
+            directorioAnterior(directorio)
+        }
+
+        else -> {
+            seleccionarFichero(input)
         }
     }
 }
 
-fun directorioAnterior(currentFile: File) {
-    var newDirectory = currentFile.parentFile
-    if (newDirectory != null && newDirectory.isDirectory) {
-
+private fun seleccionarFichero(input: Int?) {
+    var selectedFile = ficheroSeleccionado(input)
+    if (selectedFile != null && selectedFile.exists()) {
+        if (selectedFile.isDirectory) {
+            seleccionarDirectorio(selectedFile)
+        } else if (selectedFile.isFile) {
+            seleccionarArchivo(selectedFile)
+        }
     }
+}
+
+private fun ficheroExiste(): Boolean {
+    var numFicheros = directorio.listFiles().size
+    if (input >= 0 && input <= numFicheros) {
+        return true
+    }
+    return false
+}
+
+private fun ficheroSeleccionado(input: Int?): File? {
+    if (directorio.length() <= input!! && directorio.length() >= 0) {
+        return directorio.listFiles().get(input - 1)
+    }
+    return null
+}
+
+private fun seleccionarDirectorio(selectedFile: File) {
+    if (selectedFile.canRead()) {
+        directorio = selectedFile
+        mostrarDirectorio = true
+    } else {
+        println("No tiene permisos de lectura de este directorio")
+        mostrarDirectorio = false
+    }
+}
+
+private fun seleccionarArchivo(selectedFile: File) {
+    println("El archivo seleccionado no es un directorio, seleccione un directorio.")
+}
+
+fun directorioAnterior(currentFile: File) {
+    var nuevoDirectorio = currentFile.parentFile
+    if (nuevoDirectorio != null && nuevoDirectorio.isDirectory) {
+        directorio = nuevoDirectorio
+        mostrarDirectorio = true
+    }
+    mostrarDirectorio = false
 }
