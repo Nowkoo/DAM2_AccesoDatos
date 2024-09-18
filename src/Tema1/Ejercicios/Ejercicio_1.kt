@@ -3,31 +3,28 @@ package Tema1.Ejercicios
 import java.io.File
 
 var directorio = File.listRoots()[0]
-var input : String
 var mostrarDirectorio = true
 
 fun main() {
-    while (input != -1) {
+    var input : Int?
+
+    do {
         if (mostrarDirectorio) {
             mostrarDirectorio(directorio)
         }
 
         do {
             println("Introdueix una opció (-1 per acabar): ")
-            input = readln()
-            if (input.length != 0) {
-                procesarOpcion(input.toInt())
-            }
-//            input = readln().toInt()
+            input = readln().toInt()
         } while (!inputValido(input))
 
         procesarOpcion(input)
-    }
 
+    } while (input != -1)
 }
 
 fun inputValido(input: Int?): Boolean {
-    return (input == -1 || input == 0 || ficheroExiste())
+    return (input == -1 || input == 0 || ficheroExiste(input))
 }
 
 fun mostrarDirectorio(file: File) {
@@ -75,7 +72,7 @@ private fun seleccionarFichero(input: Int?) {
     }
 }
 
-private fun ficheroExiste(): Boolean {
+private fun ficheroExiste(input : Int): Boolean {
     var numFicheros = directorio.listFiles().size
     if (input >= 0 && input <= numFicheros) {
         return true
