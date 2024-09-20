@@ -3,25 +3,30 @@ package Tema1.Ejercicios
 import java.io.File
 
 var directorio = File.listRoots()[0]
+var directorioCambiado = true
 
 fun main() {
     var input : Int
 
     do {
-        mostrarDirectorio(directorio)
+        if (directorioCambiado)
+            mostrarDirectorio(directorio)
+        directorioCambiado = false
 
         do {
-            println("Introdueix una opció (-1 per acabar): ")
-            input = readln().toInt()
+            println("Introduce una opción (-1 para acabar): ")
+            input = pedirInput()
         } while (!inputValido(input))
 
-        procesarOpcion(input)
-
+        when (input) {
+            0 -> {
+                directorioAnterior(directorio)
+            }
+            else -> {
+                seleccionarFichero(input)
+            }
+        }
     } while (input != -1)
-}
-
-fun inputValido(input: Int): Boolean {
-    return (input == -1 || input == 0 || ficheroExiste(input))
 }
 
 fun mostrarDirectorio(file: File) {
@@ -42,42 +47,25 @@ fun mostrarDirectorio(file: File) {
     }
 }
 
-fun procesarOpcion(input: Int) {
-    when (input) {
-        -1 -> {
-            return
-        }
-
-        0 -> {
-            directorioAnterior(directorio)
-        }
-
-        else -> {
-            seleccionarFichero(input)
-        }
-    }
-}
-
 private fun seleccionarFichero(input: Int) {
     var selectedFile = ficheroSeleccionado(input)
     if (selectedFile != null && selectedFile.exists()) {
-        println("ENTRA")
         if (selectedFile.isDirectory) {
             seleccionarDirectorio(selectedFile)
         } else if (selectedFile.isFile) {
-            seleccionarArchivo(selectedFile)
+            println("¡Eso no es un directorio!")
         }
     }
 }
 
-private fun ficheroExiste(input : Int): Boolean {
+private fun inputValido(input : Int): Boolean {
     var numFicheros = directorio.listFiles()!!.size
-    return input in 0..numFicheros
+    return input in -1..numFicheros
 }
 
 private fun ficheroSeleccionado(input: Int): File? {
     var numFicheros = directorio.listFiles()!!.size
-    if (input > 0 && input <= numFicheros) {
+    if (input in 1..numFicheros) {
         return directorio.listFiles()!![input - 1]
     }
     return null
@@ -86,18 +74,25 @@ private fun ficheroSeleccionado(input: Int): File? {
 private fun seleccionarDirectorio(selectedFile: File) {
     if (selectedFile.canRead()) {
         directorio = selectedFile
+        directorioCambiado = true
     } else {
-        println("No tiene permisos de lectura de este directorio")
+        println("No tienes permisos para leer esto...")
     }
-}
-
-private fun seleccionarArchivo(selectedFile: File) {
-    println("El archivo seleccionado no es un directorio, seleccione un directorio.")
 }
 
 fun directorioAnterior(currentFile: File) {
     var nuevoDirectorio = currentFile.parentFile
     if (nuevoDirectorio != null) {
         directorio = nuevoDirectorio
+        directorioCambiado = true
+    }
+}
+
+fun pedirInput(): Int {
+    try {
+        return readln().toInt()
+    } catch (e: NumberFormatException) {
+        println("¡Eso no es un número!")
+        return -2
     }
 }
