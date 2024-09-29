@@ -8,7 +8,10 @@ fun main() {
     var n = f_in.read(buffer)
     while (n != -1) {
         for (i in 0..n - 1) {
-
+            print(buffer[i].toChar())
         }
+        println("")
+        n = f_in.read(buffer)
     }
+    f_in.close()
 }

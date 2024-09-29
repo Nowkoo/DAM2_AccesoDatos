@@ -1,0 +1,2 @@
+Hola. Aquest és un text més llarg, per veure com gestiona els bytes amb un buffer de 30 caràcters.
+Com que ho llegim des d'un InputStream, els caràcters especials potser no isquen bé.
