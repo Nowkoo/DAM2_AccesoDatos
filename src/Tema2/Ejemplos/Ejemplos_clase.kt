@@ -2,6 +2,8 @@ package Tema2.Ejemplos
 
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.io.FileReader
+import java.io.FileWriter
 
 fun main() {
 //    val text = "Contingut per al fitxer"
@@ -25,14 +27,30 @@ fun main() {
 
 
     //Con  f_out.write(buffer, 0, bytesRead)  solo escribimos del buffer la cantidad de bytes leída en la iteración.
-    val f_in = FileInputStream("Recursos/ex_2_12.txt")
-    val f_out = FileOutputStream("Recursos/ex_2_12_copia.txt")
-    var buffer = ByteArray(30)
-    var bytesRead = f_in.read(buffer)
-    while (bytesRead != -1) {
-        f_out.write(buffer, 0, bytesRead)
-        bytesRead = f_in.read(buffer)
+//    val f_in = FileInputStream("Recursos/ex_2_12.txt")
+//    val f_out = FileOutputStream("Recursos/ex_2_12_copia.txt")
+//    var buffer = ByteArray(30)
+//    var bytesRead = f_in.read(buffer)
+//    while (bytesRead != -1) {
+//        f_out.write(buffer, 0, bytesRead)
+//        bytesRead = f_in.read(buffer)
+//    }
+//    f_out.close()
+//    f_in.close()
+
+
+    //Las líneas escritas las introduce el usuario
+    while(true) {
+        var input = readLine()!!
+        if (input.isEmpty()) input = ""
+        else if (input.equals("-1")) break
+
+        val f_out = FileWriter("Recursos/f5.txt", true)
+        for (c in input) {
+            f_out.write(c.toInt())
+
+        }
+        f_out.write("\n")
+        f_out.close()
     }
-    f_out.close()
-    f_in.close()
 }
