@@ -63,3 +63,16 @@ class FitxerImatge(fEnt: File) {
         f_out.close()
     }
 }
+
+fun main() {
+    val f = File("./Recursos/pluginfile.bmp")
+
+    try {
+        val fi = FitxerImatge(f)
+
+        fi.transformaNegatiu()
+        fi.transformaObscur()
+        fi.transformaBlancNegre()
+
+    } catch (e: Exception) {}
+}
