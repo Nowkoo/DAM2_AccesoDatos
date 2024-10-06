@@ -1,6 +1,9 @@
 package Tema2.Ejercicios
 import javax.swing.*
 import java.awt.*
+import java.io.File
+import java.io.FileReader
+import java.io.FileWriter
 
 class E2_EditorText : JFrame() {
     val et_f = JLabel("Fitxer:")
@@ -30,11 +33,45 @@ class E2_EditorText : JFrame() {
         add(panell1)
         add(panell2)
         pack()
+
         obrir.addActionListener {
-// Instruccions per a bolcar el contingut del fitxer en el JTextArea
+            obrir()
         }
         guardar.addActionListener {
-// Instruccions per a guardar el contingut del JTextArea al fitxer.
+            guardar()
+        }
+    }
+
+    private fun guardar() {
+        val f_out: FileWriter
+        var rutaFitxer = fitxer.getText()
+        var file = File(rutaFitxer)
+
+        if (file.exists()) {
+            f_out = FileWriter(file)
+            f_out.write(area.text)
+            f_out.close()
+        } else {
+            println("No he trobat el fitxer")
+        }
+    }
+
+    private fun obrir() {
+        area.text = ""
+        val f_in: FileReader
+        var rutaFitxer = fitxer.getText()
+        var file = File(rutaFitxer)
+
+        if (file.exists()) {
+            f_in = FileReader(file)
+            var c = f_in.read()
+            while (c != -1) {
+                area.text += c.toChar()
+                c = f_in.read()
+            }
+            f_in.close()
+        } else {
+            println("No he trobat el fitxer")
         }
     }
 }
