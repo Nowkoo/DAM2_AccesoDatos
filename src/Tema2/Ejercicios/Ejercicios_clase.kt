@@ -1,5 +1,6 @@
 package Tema2.Ejercicios
 
+import jdk.incubator.vector.VectorOperators.Binary
 import java.io.*
 import java.nio.charset.Charset
 
@@ -123,5 +124,17 @@ fun main() {
 
 
 
+// Para leer un archivo con números, si cada int son 32 bytes, necesitaremos leer 4 veces por número.
+    val f_in = FileInputStream("Recursos/f1.txt")
+    var c = f_in.read()
+    while (c != -1) {
+        var mi_int_p1 = f_in.read()
+        var mi_int_p2 = f_in.read()
+        var mi_int_p3 = f_in.read()
+        var mi_int_p4 = f_in.read()
 
+        var mi_entero = (mi_int_p1 shr 24) //Sense acabar, mirar operador sh
+        println()
+    }
+    f_in.close()
 }

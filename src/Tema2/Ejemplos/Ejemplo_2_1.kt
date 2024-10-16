@@ -11,8 +11,6 @@ fun main(args: Array<String>) {
         c = f_in.read()
     }
     f_in.close()
-
-    otroConstructor()
 }
 
 fun otroConstructor() {
