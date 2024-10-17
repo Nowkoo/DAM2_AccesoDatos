@@ -12,6 +12,7 @@ fun main() {
 //    }
 //    f_out.close()
 
+
     //Cuando no quedan bytes que leer se queda el contenido de los últimos que se habían leído.
 //    val f_in = FileInputStream("Recursos/f1.txt")
 //    var buffer = ByteArray(2)
@@ -86,7 +87,6 @@ fun main() {
 //    }
 
 
-
 //    Copia de un fichero a otro utilizando un buffer de caracteres
 //    val f_in = FileReader("Recursos/ex_2_12.txt")
 //    val f_out = FileWriter("Recursos/ex_2_12_copia.txt")
@@ -100,7 +100,6 @@ fun main() {
 //    f_in.close()
 
 
-
 //    Más fácil todavía
 //    val f_in = FileReader("Recursos/ex_2_12.txt")
 //    val f_out = FileWriter("Recursos/ex_2_12_copia.txt")
@@ -112,7 +111,6 @@ fun main() {
 //    f_in.close()
 
 
-
 //    O en una línea
 //    val f_in = FileReader("Recursos/ex_2_12.txt")
 //    val f_out = FileWriter("Recursos/ex_2_12_copia.txt")
@@ -122,19 +120,4 @@ fun main() {
 //    f_out.close()
 //    f_in.close()
 
-
-
-// Para leer un archivo con números, si cada int son 32 bytes, necesitaremos leer 4 veces por número.
-    val f_in = FileInputStream("Recursos/f1.txt")
-    var c = f_in.read()
-    while (c != -1) {
-        var mi_int_p1 = f_in.read()
-        var mi_int_p2 = f_in.read()
-        var mi_int_p3 = f_in.read()
-        var mi_int_p4 = f_in.read()
-
-        var mi_entero = (mi_int_p1 shr 24) //Sense acabar, mirar operador sh
-        println()
-    }
-    f_in.close()
 }

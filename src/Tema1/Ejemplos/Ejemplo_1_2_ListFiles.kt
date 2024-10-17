@@ -1,8 +1,6 @@
 package Ejemplos
 
-import java.io.BufferedReader
 import java.io.File
-import java.io.InputStreamReader
 
 fun main(args: Array<String>) {
     println("Introduce un directorio:")
@@ -12,7 +10,7 @@ fun main(args: Array<String>) {
     println("---------------------------------------------------")
 
     if (f.exists()) {
-        for (e in f.walk()) {
+        for (e in f.listFiles().sorted()) {
             if (e.isDirectory) {
                 println("${e.name} es directorio")
             } else if (e.isFile) {
