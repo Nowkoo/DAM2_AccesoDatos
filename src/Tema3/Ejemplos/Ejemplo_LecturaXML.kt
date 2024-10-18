@@ -5,54 +5,58 @@ import org.w3c.dom.Node
 import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 
+val dbFactory = DocumentBuilderFactory.newInstance()
+val documentBuilder = dbFactory.newDocumentBuilder()
+val doc = documentBuilder.parse(File("Recursos/coches.xml"))
 fun main() {
-    val dbFactory = DocumentBuilderFactory.newInstance()
-    val documentBuilder = dbFactory.newDocumentBuilder()
-    val doc = documentBuilder.parse(File("Recursos/coches.xml"))
+    coches()
+}
 
-//    val a = doc.getDocumentElement()
-//    val fa = a.childNodes
-//
-//    println("método 1")
-//    for(i in 0 until fa.length) {
-//        if (fa.item(i).nodeType.toInt() == 1) {
-//            println(fa.item(i).nodeName)
-//        }
-//    }
-//
-//    println("método 2")
-//    for(i in 0 until fa.length) {
-//        if (fa.item(i).nodeType != Node.TEXT_NODE) {
-//            println(fa.item(i).nodeName)
-//        }
-//    }
-//
-//    println("método 3")
-//    val fa2 = a.getElementsByTagName("vehiculo")
-//    for(i in 0 until fa2.length) {
-//        println(fa2.item(i).nodeName)
-//    }
-
+fun coches() {
     val coches = doc.getElementsByTagName("vehiculo")
-    for(i in 0 until coches.length) {
-        var coche = coches.item(i) as Element
+
+    for(i in 0..<coches.length) {
+        val coche = coches.item(i) as Element
+        val marca = coche.getElementsByTagName("marca").item(0).textContent
+        val modelo = coche.getElementsByTagName("modelo").item(0).textContent
+        val matricula = coche.getElementsByTagName("matricula").item(0).textContent
+
         println("${coche.getNodeName()} ${i + 1}")
+        println("Marco: $marca")
+        println("Modelo: $modelo")
+        println("Matrícula: $matricula")
+        println()
+    }
+}
 
-        val marca = coche.getElementsByTagName("marca")
-        println(marca.item(0).nodeValue)
+fun nodes1() {
+    val a = doc.getDocumentElement()
+    val fa = a.childNodes
 
-        for(i in 0 until coches.length) {
-            println(coches.item(i).getNodeName())
+    println("método 1")
+    for(i in 0 until fa.length) {
+        if (fa.item(i).nodeType.toInt() == 1) {
+            println(fa.item(i).nodeName)
         }
+    }
+}
 
+fun nodes2() {
+    val a = doc.getDocumentElement()
+    val fa = a.childNodes
 
+    println("método 2")
+    for(i in 0 until fa.length) {
+        if (fa.item(i).nodeType != Node.TEXT_NODE) {
+            println(fa.item(i).nodeName)
+        }
+    }
+}
 
-
-
-//        for (i in 0 until childNodes.length) {
-////            if (childNodes.item(i).nodeType != Node.TEXT_NODE) {
-////                println("${childNodes.item(i).getNodeName()}")
-////            }
-//        }
+fun nodes3() {
+    val a = doc.getDocumentElement()
+    val fa = a.getElementsByTagName("vehiculo")
+    for(i in 0 until fa.length) {
+        println(fa.item(i).nodeName)
     }
 }
