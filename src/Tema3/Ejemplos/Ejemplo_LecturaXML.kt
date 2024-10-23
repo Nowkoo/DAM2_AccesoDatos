@@ -9,10 +9,10 @@ val dbFactory = DocumentBuilderFactory.newInstance()
 val documentBuilder = dbFactory.newDocumentBuilder()
 val doc = documentBuilder.parse(File("Recursos/coches.xml"))
 fun main() {
-    coches()
+    lecturaCoches1()
 }
 
-fun coches() {
+fun lecturaCoches1() {
     val coches = doc.getElementsByTagName("vehiculo")
 
     for(i in 0..<coches.length) {
@@ -29,7 +29,11 @@ fun coches() {
     }
 }
 
-fun nodes1() {
+fun lecturaCoches2() {
+
+}
+
+fun lecturaNodes1() {
     val a = doc.getDocumentElement()
     val fa = a.childNodes
 
@@ -41,7 +45,7 @@ fun nodes1() {
     }
 }
 
-fun nodes2() {
+fun lecturaNodes2() {
     val a = doc.getDocumentElement()
     val fa = a.childNodes
 
@@ -53,7 +57,7 @@ fun nodes2() {
     }
 }
 
-fun nodes3() {
+fun lecturaNodes3() {
     val a = doc.getDocumentElement()
     val fa = a.getElementsByTagName("vehiculo")
     for(i in 0 until fa.length) {
