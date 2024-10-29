@@ -5,10 +5,14 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.ObjectOutputStream
 
-fun main() {
-    val ruta = mutableListOf<Ruta>()
+const val RUTA_RUTES_OBJ = "Recursos/Empleats.obj"
+const val RUTA_RUTES_DAT = "Recursos/Empleats.dat"
 
-    val f_in = DataInputStream(FileInputStream("Recursos/Rutes.dat"))
+
+fun main() {
+    val rutes = mutableListOf<Ruta>()
+
+    val f_in = DataInputStream(FileInputStream(RUTA_RUTES_DAT))
     while (f_in.available() > 0) {
         val nom = f_in.readUTF()
         val desnivell = f_in.readInt()
@@ -23,19 +27,21 @@ fun main() {
         }
 
         val ruta = Ruta(nom, desnivell, desnivellAcumulat, llistaDePunts)
+        rutes.add(ruta)
         ruta.mostrarRuta()
         println()
     }
     f_in.close()
 
+    escriureRutes(rutes)
 }
 
-fun writeRutes(empleats: List<Empleat>) {
-    val fileOut = FileOutputStream(RUTA_EMPLEATS)
+fun escriureRutes(rutas: List<Ruta>) {
+    val fileOut = FileOutputStream(RUTA_RUTES_OBJ)
     val objectOut = ObjectOutputStream(fileOut)
 
-    for (empleat in empleats) {
-        objectOut.writeObject(empleat)
+    for (ruta in rutas) {
+        objectOut.writeObject(ruta)
     }
 
     objectOut.close()
