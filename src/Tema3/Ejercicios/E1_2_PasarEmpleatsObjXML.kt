@@ -1,10 +1,11 @@
 package Tema3.Ejercicios
 
-import Tema3.Ejemplos.documentBuilder
-import java.io.File
 import java.io.FileInputStream
 import java.io.ObjectInputStream
 import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.transform.TransformerFactory
+import javax.xml.transform.dom.DOMSource
+import javax.xml.transform.stream.StreamResult
 
 fun main() {
     val f = ObjectInputStream(FileInputStream("Recursos/Empleats.obj"))
@@ -28,7 +29,19 @@ fun main() {
             empleatElement.appendChild(dep)
 
             val edat = doc.createElement("edat")
+            edat.textContent = empleat.edat.toString()
+            empleatElement.appendChild(edat)
 
+            val sou = doc.createElement("sou")
+            sou.textContent = empleat.sou.toString()
+            empleatElement.appendChild(sou)
+
+            arrel.appendChild(empleatElement)
         }
-    } catch (e: Exception) {}
+    } catch (e: Exception) {
+        f.close()
+    }
+
+    val trans = TransformerFactory.newInstance().newTransformer()
+    trans.transform(DOMSource(doc), StreamResult("Recursos/Empleats.xml"))
 }
