@@ -5,8 +5,8 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.ObjectOutputStream
 
-const val RUTA_RUTES_OBJ = "Recursos/Empleats.obj"
-const val RUTA_RUTES_DAT = "Recursos/Empleats.dat"
+const val RUTA_RUTES_OBJ = "Recursos/Rutes.obj"
+const val RUTA_RUTES_DAT = "Recursos/Rutes.dat"
 
 
 fun main() {

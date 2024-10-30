@@ -5,7 +5,7 @@ import java.io.FileInputStream
 import java.io.ObjectInputStream
 
 fun main() {
-
+    llegirRutes()
 }
 
 fun llegirRutes() {
@@ -15,7 +15,8 @@ fun llegirRutes() {
     try {
         while (true) {
             var ruta = objIn.readObject() as Ruta
-            println(ruta.mostrarRuta())
+            ruta.mostrarRuta()
+            println()
         }
     } catch (e: EOFException) {
         //Si s'acaba el contingut del fitxer, no fem res.
