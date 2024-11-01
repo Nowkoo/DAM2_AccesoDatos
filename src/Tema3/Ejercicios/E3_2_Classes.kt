@@ -4,8 +4,8 @@ import Tema1.Ejercicios.mostrarDirectorio
 import java.io.Serializable
 
 class Coordenades(
-    var latitud: Double,
-    var longitud: Double
+    var longitud: Double,
+    var latitud: Double
 ) : Serializable {
     companion object {
         private const val serialVersionUID: Long = 1
@@ -61,3 +61,5 @@ class Ruta (var nom: String, var desnivell: Int, var desnivellAcumulat: Int, var
         }
     }
 }
+
+class Rutes(var rutes: MutableList<Ruta> = mutableListOf<Ruta>())

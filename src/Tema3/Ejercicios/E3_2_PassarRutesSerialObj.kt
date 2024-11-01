@@ -21,8 +21,8 @@ fun main() {
         val llistaDePunts = mutableListOf<PuntGeo>()
         for (i in 1..numPunts) {
             val nomPunt = f_in.readUTF()
-            val l2 = f_in.readDouble()
             val l1 = f_in.readDouble()
+            val l2 = f_in.readDouble()
             llistaDePunts.add(PuntGeo(nomPunt, Coordenades(l1, l2)))
         }
 

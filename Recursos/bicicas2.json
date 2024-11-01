@@ -1,0 +1,36 @@
+[
+  {
+    "ocupacion":[
+      {
+        "id":"01",
+        "punto":"UJI - FCHS",
+        "puestos":28,
+        "ocupados":11,
+        "latitud":"39.99533",
+        "longitud":"-0.06999",
+        "porcentajeAltaOcupacion":"80",
+        "porcentajeBajaOcupacion":"20"
+      },
+      {
+        "id":"02",
+        "punto":"ESTACIÓN DE FERROCARRIL YAUTOBUSES",
+        "puestos":28,
+        "ocupados":8,
+        "latitud":"39.98765",
+        "longitud":"-0.05281",
+        "porcentajeAltaOcupacion":"80",
+        "porcentajeBajaOcupacion":"20"
+      },
+      {
+        "id":"03",
+        "punto":"PLAZA DE PESCADERÍA",
+        "puestos":28,
+        "ocupados":13,
+        "latitud":"39.98580",
+        "longitud":"-0.03798",
+        "porcentajeAltaOcupacion":"80",
+        "porcentajeBajaOcupacion":"20"
+      }
+    ]
+  }
+]
