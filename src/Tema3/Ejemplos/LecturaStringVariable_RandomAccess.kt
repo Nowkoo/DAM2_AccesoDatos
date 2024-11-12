@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
     val f = RandomAccessFile("Recursos/Empleats2.dat", "r")  // Solo lectura
     val sc = Scanner(System.`in`)
     println("Quin registre? (-1 per a eixir): ")
-    var num = sc.nextInt()
+    var num = readLine()?.toIntOrNull() ?: -1
 
     while (num != -1) {
         // Establecemos un desplazamiento en bytes

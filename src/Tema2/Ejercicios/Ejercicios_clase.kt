@@ -27,16 +27,16 @@ fun main() {
 
 
 //    Copia de un fichero a otro utilizando un buffer de bytes. Con  f_out.write(buffer, 0, bytesRead)  solo escribimos del buffer la cantidad de bytes leída en la iteración.
-//    val f_in = FileInputStream("Recursos/ex_2_12.txt")
-//    val f_out = FileOutputStream("Recursos/ex_2_12_copia.txt")
-//    var buffer = ByteArray(30)
-//    var bytesRead = f_in.read(buffer)
-//    while (bytesRead != -1) {
-//        f_out.write(buffer, 0, bytesRead)
-//        bytesRead = f_in.read(buffer)
-//    }
-//    f_out.close()
-//    f_in.close()
+    val f_in = FileInputStream("Recursos/ex_2_12.txt")
+    val f_out = FileOutputStream("Recursos/ex_2_12_copia.txt")
+    var buffer = ByteArray(30)
+    var bytesRead = f_in.read(buffer)
+    while (bytesRead != -1) {
+        f_out.write(buffer, 0, bytesRead)
+        bytesRead = f_in.read(buffer)
+    }
+    f_out.close()
+    f_in.close()
 
 
 //    Las líneas escritas las introduce el usuario
