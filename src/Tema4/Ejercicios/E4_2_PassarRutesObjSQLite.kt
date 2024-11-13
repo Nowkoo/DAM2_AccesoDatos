@@ -15,17 +15,17 @@ fun main() {
         var num_ruta = 1;
         while (true) {
             val ruta = f.readObject() as Ruta
-            st.executeUpdate("INSERT INTO RUTES VALUES($num_ruta, ${ruta.nom}, ${ruta.desnivell}, ${ruta.desnivellAcumulat});")
+            st.executeUpdate("INSERT INTO RUTES VALUES($num_ruta, '${ruta.nom}', ${ruta.desnivell}, ${ruta.desnivellAcumulat});")
 
             var num_punt = 1
             for (punt in ruta.llistaDePunts) {
-                st.executeUpdate("INSERT INTO PUNTS VALUES($num_ruta, $num_punt, ${punt.nom}, ${punt.coord.latitud}, ${punt.coord.longitud});")
+                st.executeUpdate("INSERT INTO PUNTS VALUES($num_ruta, $num_punt, '${punt.nom}', ${punt.coord.latitud}, ${punt.coord.longitud});")
                 num_punt++
             }
             num_ruta++
         }
     } catch (e: Exception) {
-        e.printStackTrace()
+        println(e.message)
     } finally {
         f.close()
     }
