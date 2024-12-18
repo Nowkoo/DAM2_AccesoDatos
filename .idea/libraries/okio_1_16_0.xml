@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="okio-1.16.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Llibreries/okio-1.16.0.jar!/" />
+      <root url="jar://$USER_HOME$/Llibreries/moshi-1.8.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
