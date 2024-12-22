@@ -15,8 +15,6 @@
     <orderEntry type="library" name="moshi-1.8.0" level="project" />
     <orderEntry type="library" name="okio-1.16.0" level="project" />
     <orderEntry type="library" name="postgresql-42.2.24" level="project" />
-    <orderEntry type="library" name="sqlite-jdbc-3.46.1.0" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.30" level="project" />
-    <orderEntry type="library" name="jedis-3.5.0" level="project" />
+    <orderEntry type="library" name="jedis-3.5.01" level="project" />
   </component>
 </module>
