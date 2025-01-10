@@ -1,4 +1,4 @@
-package tema8_jedis.exemples
+package tema_jedis.exemples
 
 import redis.clients.jedis.Jedis
 

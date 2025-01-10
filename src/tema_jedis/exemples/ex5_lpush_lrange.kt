@@ -1,4 +1,4 @@
-package tema8_jedis.exemples
+package tema_jedis.exemples
 
 import redis.clients.jedis.Jedis
 
@@ -6,9 +6,9 @@ fun main() {
     val con = Jedis("localhost")
     con.connect()
 
-    con.sadd("colors", "amarillo", "verde")
-    val s = con.smembers("colors")
-    for (e in s) {
+    con.lpush("lista1", "valor1", "valor2")
+    val ll = con.lrange("lista1", 0, -1)
+    for (e in ll) {
         println(e)
     }
 

@@ -1,4 +1,4 @@
-package tema8_jedis.exercicis
+package tema_jedis.exercicis
 
 import redis.clients.jedis.Jedis
 
